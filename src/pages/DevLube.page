@@ -1,0 +1,84 @@
+<apex:page showHeader="true" sidebar="true" controller="DevLubeController" id="pg">
+<!--apex:pageMessage title="DevLube process is successfully completed " severity="info" strength="2" rendered="{!showmg}" id="ms"></apex:pageMessage-->
+    <script>
+    var previousOnload = window.onload; 
+    window.onload = function() { if (previousOnload) { previousOnload(); } 
+    
+           
+                          // Calls the Metdata API from JavaScript to create the Remote Site Setting to permit Apex callouts
+            var binding = new XMLHttpRequest();
+          
+            var request = 
+                '<?xml version="1.0" encoding="utf-8"?>' + 
+                '<env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'+
+                    '<env:Header>' + 
+                        '<urn:SessionHeader xmlns:urn="http://soap.sforce.com/2006/04/metadata">' + 
+                            '<urn:sessionId>{!$Api.Session_ID}</urn:sessionId>' + 
+                        '</urn:SessionHeader>' + 
+                    '</env:Header>' + 
+                    '<env:Body>' +
+                        '<upsertMetadata xmlns="http://soap.sforce.com/2006/04/metadata">' + 
+                            '<metadata xsi:type="RemoteSiteSetting">' + 
+                                '<fullName>{!rssName}</fullName>' + 
+                                '<description>{!rssDescription}</description>' + 
+                                '<disableProtocolSecurity>false</disableProtocolSecurity>' + 
+                                '<isActive>true</isActive>' + 
+                                '<url>https://{!Host}</url>' +
+                            '</metadata>' +
+                        '</upsertMetadata>' +
+                    '</env:Body>' + 
+                '</env:Envelope>';
+            binding.open('POST', 'https://{!Host}/services/Soap/m/31.0');
+            binding.setRequestHeader('SOAPAction','""');
+            binding.setRequestHeader('Content-Type', 'text/xml');
+             
+            binding.onreadystatechange = 
+                function() { 
+                    if(this.readyState==4) {
+                        var parser = new DOMParser();
+                        var doc  = parser.parseFromString(this.response, 'application/xml');
+                        var errors = doc.getElementsByTagName('errors');
+                        var messageText = '';
+                        for(var errorIdx = 0; errorIdx < errors.length; errorIdx++)
+                            messageText+= errors.item(errorIdx).getElementsByTagName('message').item(0).innerHTML + '\n';
+                        displayMetadataResponse(messageText);
+                    } 
+                }
+            binding.send(request);
+            
+        } 
+    </script>
+    <apex:form id="fm" >
+        
+        <apex:pageblock title="Welcome to DevLube" id="pb">
+       
+          <apex:pageBlockSection columns="1">          
+            <apex:pageBlockSectionItem > <apex:inputCheckbox value="{!dataDeletion}" /><b> 1. Delete all Data </b> </apex:pageBlockSectionItem>
+             <apex:pageBlockSectionItem >  <apex:inputCheckbox value="{!rulesDeletion}"/><b> 2. Delete all Lead Assignment and Case Assignment / Escalation Rules </b> </apex:pageBlockSectionItem>
+                
+            <apex:pageBlockSectionItem > <apex:inputCheckbox value="{!customPagesDeletion}"/><b>  3. Delete all Page Layout(Except Master Layouts) </b> </apex:pageBlockSectionItem>
+           
+            <apex:pageBlockSectionItem >  <apex:inputCheckbox value="{!customLinksButtonsDeletion}"/><b> 4. Delete all Custom Links and Custom Buttons </b> </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >  <apex:inputCheckbox value="{!class_PageDeletion}"/><b>   5. Delete all Apex Classes and Visualforce Pages </b> <br/> &nbsp;&nbsp;&nbsp;(Above 4 is required to delete all the Apex Classes and Visualforce Pages) </apex:pageBlockSectionItem> 
+            <apex:pageBlockSectionItem >  <apex:inputCheckbox value="{!customfieldsDeletion}"/><b> 6. Delete all Custom Fields</b> <br/> &nbsp;&nbsp;&nbsp;(Above 2, 5 are required to delete all the Custom Fields) </apex:pageBlockSectionItem>            
+            <apex:pageBlockSectionItem >  <apex:inputCheckbox value="{!customObjectDeletion}"/><b> 7. Delete all Custom Objects </b> <br/> &nbsp;&nbsp;&nbsp;(Above 5 is required to delete all the Custom Objects )  </apex:pageBlockSectionItem>
+            <apex:pageBlockSectionItem >  <apex:inputCheckbox value="{!addMyIP}"/><b>  8. Add my IP Address to Whitelisted IP Adress </b>  </apex:pageBlockSectionItem>
+          </apex:pageBlockSection> 
+          <apex:pageBlockSection rendered="{!batchStatusBool}">
+            <apex:actionStatus id="act" >
+             
+<apex:facet name="start">
+   (checking......)
+</apex:facet>
+
+            </apex:actionstatus>
+            DeleteAllData Batch Status is {!batchStatus}
+            <apex:actionPoller interval="5" action="{!checkBatchStatus}" enabled="{!pollerBool}" reRender="pb" status="act"/> 
+        </apex:pageBlockSection>
+
+          <apex:pageBlockButtons >
+          <apex:commandButton value="Start" action="{!listMetadata}" />
+          </apex:pageBlockButtons>
+        </apex:pageblock>
+    </apex:form>    
+</apex:page>
