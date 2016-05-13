@@ -228,8 +228,8 @@ public with sharing class DevLubeController {
                     MetadataService.IpRange[] ipRanges2 = new List<MetadataService.IpRange>(); 
                     MetadataService.IpRange newIp = new MetadataService.IpRange();
                     newIp.description = 'Added through DevLube';
-                    newIp.start = '49.206.51.251';
-                    newIp.end_x = '49.206.51.251';
+                    newIp.start = IpAdd;
+                    newIp.end_x = IpAdd;
                     ipRanges2.add(newIp);
                     newSett.networkAccess.ipRanges=ipRanges2;
                     newSett.sessionSettings.sessionTimeout='TwoHours';

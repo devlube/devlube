@@ -1,12 +1,23 @@
 public class DeleteAllRecords implements Database.Batchable<string> {
+public list<String> deleteObjectList = new List<string>();
+
+    public DeleteAllRecords(List<String> objectList){
+        deleteObjectList.addall(objectList);
+    }
+
+    public DeleteAllRecords(){
+        
+    }
+
 
     public Iterable<string> start(Database.BatchableContext bc) {
         Map<String, Schema.SObjectType> describeAll = Schema.getGlobalDescribe(); 
-        set<string> allObjectSet = describeAll.keySet();
-        list<string> deleteObjectList = new List<string>();
-        for(string ss : allObjectSet){          
+        set<String> allObjectSet = describeAll.keySet();
+        set<String> undeleteableObjects = new set<String>{'vote', 'contentdocumentlink', 'profile', 'objectpermissions', 'permissionset', 'emailtemplate', 'group', 'permissionsetassignment', 'fieldpermissions', 'setupentityaccess', 'collaborationgrouprecord', 'ideacomment', 'authsession'};
+        
+        for(String ss : allObjectSet){          
            Schema.DescribeSObjectResult d =  Schema.getGlobalDescribe().get(ss).getDescribe();
-             if(d.isQueryable() && d.isdeletable() && ss!='vote' && ss!='ContentDocumentLink' && ss!='profile' && ss!='objectpermissions' && ss!='PermissionSet' && ss!='emailtemplate'&& ss!='Group' && ss!='permissionsetassignment' && ss!='fieldpermissions'&&ss!='setupentityaccess'&&ss!='CollaborationGroupRecord'&&SS!='ideacomment'&&ss!='AuthSession'){
+             if(d.isQueryable() && d.isdeletable() && !undeleteableObjects.contains(ss.toLowerCase())){
                 deleteObjectList.add(ss);            
              }
         }
@@ -14,20 +25,21 @@ public class DeleteAllRecords implements Database.Batchable<string> {
         return deleteObjectList;	
     }         
     
-    public void execute(Database.BatchableContext BC, list<string> sc){
+    public void execute(Database.BatchableContext BC, List<String> sc){
         list<sobject> deleteRows = new list<sobject>();
-        for(string s : sc){
-            string query = 'select id from ';
-            if(s == 'PriceBook2'){
-                query = query + s +' where IsStandard = false';
+      
+        if(sc.size()>0){  
+            String query = 'select id from ';
+            if(sc[0] == 'PriceBook2'){
+                query = query + sc[0] +' where IsStandard = false';
             }
             else
-            query = query + s;
+            query = query + sc[0];
             
             list<sobject> objectRows = database.query(query);
             if(objectRows.size()>0) deleteRows.addall(objectRows); 
-
-    	}
+        }
+    	
       if(deleteRows.size()>0) delete deleteRows;
     }
     

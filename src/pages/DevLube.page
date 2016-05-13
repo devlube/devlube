@@ -1,11 +1,12 @@
 <apex:page showHeader="true" sidebar="true" controller="DevLubeController" id="pg">
 <!--apex:pageMessage title="DevLube process is successfully completed " severity="info" strength="2" rendered="{!showmg}" id="ms"></apex:pageMessage-->
+<apex:includeScript value="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" />
     <script>
-    var previousOnload = window.onload; 
-    window.onload = function() { if (previousOnload) { previousOnload(); } 
+    j$ = jQuery.noConflict();
+    j$(document).ready(function() {  
     
            
-                          // Calls the Metdata API from JavaScript to create the Remote Site Setting to permit Apex callouts
+        // Calls the Metdata API from JavaScript to create the Remote Site Setting to permit Apex callouts
             var binding = new XMLHttpRequest();
           
             var request = 
@@ -46,7 +47,7 @@
                 }
             binding.send(request);
             
-        } 
+        });
     </script>
     <apex:form id="fm" >
         
