@@ -1,16 +1,12 @@
+/**
+ * Date  -  June 2016.
+ * Developed by - Dhruvsoft Services Private Limited.         
+ * Purpose of Code - This class is used to generate the mock response test the webservices callouts 
+ *                   made from the DevLubeContollerTest.
+ * Package Version - 1.3 
+ **/
 public class MetadataServiceMock implements WebServiceMock {
-    public void doInvoke(
-            Object stub,
-            Object request,
-            Map<String, Object> response,
-            String endpoint,
-            String soapAction,
-            String requestName,
-            String responseNS,
-            String responseName,
-            String responseType
-            ) {
-
+    public void doInvoke(Object stub, Object request, Map<String, Object> response, String endpoint, String soapAction, String requestName, String responseNS, String responseName,String responseType) {
         if (request instanceof MetadataService.readMetadata_element) {
             MetadataService.readMetadata_element rm =  (MetadataService.readMetadata_element) request;
             if(rm.type_x == 'Layout'){
@@ -29,55 +25,55 @@ public class MetadataServiceMock implements WebServiceMock {
             MetadataService.ReadLayoutResult rr = new MetadataService.ReadLayoutResult();
             rr.records = new MetadataService.Layout[]{r1};
 
-			MetadataService.readLayoutResponse_element responseElement = new  MetadataService.readLayoutResponse_element();
+      MetadataService.readLayoutResponse_element responseElement = new  MetadataService.readLayoutResponse_element();
             responseElement.result = rr;
-			 response.put('response_x', responseElement);
+       response.put('response_x', responseElement);
             }
             
            
-            	
+              
              else if(rm.type_x == 'CustomField'){
-            		MetadataService.CustomField r1 = new MetadataService.CustomField();
-           		 	r1.type = 'CustomField';
-            		r1.fullName = 'case';
-            		MetadataService.ReadCustomFieldResult rr = new MetadataService.ReadCustomFieldResult();
-            		rr.records = new MetadataService.CustomField[]{r1};
+                MetadataService.CustomField r1 = new MetadataService.CustomField();
+                  r1.type = 'CustomField';
+                r1.fullName = 'case';
+                MetadataService.ReadCustomFieldResult rr = new MetadataService.ReadCustomFieldResult();
+                rr.records = new MetadataService.CustomField[]{r1};
 
-				MetadataService.readCustomFieldResponse_element responseElement = new  MetadataService.readCustomFieldResponse_element();
-            	responseElement.result = rr; 
+        MetadataService.readCustomFieldResponse_element responseElement = new  MetadataService.readCustomFieldResponse_element();
+              responseElement.result = rr; 
                  response.put('response_x', responseElement);
             }
             else if(rm.type_x == 'AssignmentRule'){
-              	MetadataService.AssignmentRule r1 = new MetadataService.AssignmentRule();
-           		 	r1.type = 'AssignmentRule';
-            		r1.fullName = 'case';
-            		MetadataService.ReadAssignmentRuleResult rr = new MetadataService.ReadAssignmentRuleResult();
-            		rr.records = new MetadataService.AssignmentRule[]{r1};
+                MetadataService.AssignmentRule r1 = new MetadataService.AssignmentRule();
+                  r1.type = 'AssignmentRule';
+                r1.fullName = 'case';
+                MetadataService.ReadAssignmentRuleResult rr = new MetadataService.ReadAssignmentRuleResult();
+                rr.records = new MetadataService.AssignmentRule[]{r1};
 
-				MetadataService.readAssignmentRuleResponse_element responseElement = new  MetadataService.readAssignmentRuleResponse_element();
-            	responseElement.result = rr;
+        MetadataService.readAssignmentRuleResponse_element responseElement = new  MetadataService.readAssignmentRuleResponse_element();
+              responseElement.result = rr;
                 response.put('response_x', responseElement);
             }
             else if(rm.type_x == 'EscalationRule'){
                 MetadataService.EscalationRule r1 = new MetadataService.EscalationRule();
-           		 	r1.type = 'AssignmentRule';
-            		r1.fullName = 'case';
-            		MetadataService.ReadEscalationRuleResult rr = new MetadataService.ReadEscalationRuleResult();
-            		rr.records = new MetadataService.EscalationRule[]{r1};
+                  r1.type = 'AssignmentRule';
+                r1.fullName = 'case';
+                MetadataService.ReadEscalationRuleResult rr = new MetadataService.ReadEscalationRuleResult();
+                rr.records = new MetadataService.EscalationRule[]{r1};
 
-				MetadataService.readEscalationRuleResponse_element responseElement = new  MetadataService.readEscalationRuleResponse_element();
-            	responseElement.result = rr; 
+        MetadataService.readEscalationRuleResponse_element responseElement = new  MetadataService.readEscalationRuleResponse_element();
+              responseElement.result = rr; 
                 response.put('response_x', responseElement);
             }
             else if(rm.type_x == 'WebLink'){
                 MetadataService.WebLink r1 = new MetadataService.WebLink();
-           		 	r1.type = 'WebLink';
-            		r1.fullName = 'case';
-            		MetadataService.ReadWebLinkResult rr = new MetadataService.ReadWebLinkResult();
-            		rr.records = new MetadataService.WebLink[]{r1};
+                  r1.type = 'WebLink';
+                r1.fullName = 'case';
+                MetadataService.ReadWebLinkResult rr = new MetadataService.ReadWebLinkResult();
+                rr.records = new MetadataService.WebLink[]{r1};
 
-				MetadataService.readWebLinkResponse_element responseElement = new  MetadataService.readWebLinkResponse_element();
-            	responseElement.result = rr;
+        MetadataService.readWebLinkResponse_element responseElement = new  MetadataService.readWebLinkResponse_element();
+              responseElement.result = rr;
                 response.put('response_x', responseElement);
             }
             else if(rm.type_x == 'SecuritySettings'){
@@ -90,15 +86,15 @@ public class MetadataServiceMock implements WebServiceMock {
                 MetadataService.SecuritySettings r1 = new MetadataService.SecuritySettings();
                 MetadataService.SessionSettings sset = new MetadataService.SessionSettings();
                 sset.sessionTimeout='TwoHours';
-           		 	r1.type = 'SecuritySettings';
-            		r1.fullName = 'Security';
-                	r1.networkAccess = na;
-                	r1.sessionSettings = sset;
-            		MetadataService.ReadSecuritySettingsResult rr = new MetadataService.ReadSecuritySettingsResult();
-            		rr.records = new MetadataService.SecuritySettings[]{r1};
+                  r1.type = 'SecuritySettings';
+                r1.fullName = 'Security';
+                  r1.networkAccess = na;
+                  r1.sessionSettings = sset;
+                MetadataService.ReadSecuritySettingsResult rr = new MetadataService.ReadSecuritySettingsResult();
+                rr.records = new MetadataService.SecuritySettings[]{r1};
 
-				MetadataService.readSecuritySettingsResponse_element responseElement = new  MetadataService.readSecuritySettingsResponse_element();
-            	responseElement.result = rr; 
+        MetadataService.readSecuritySettingsResponse_element responseElement = new  MetadataService.readSecuritySettingsResponse_element();
+              responseElement.result = rr; 
                 response.put('response_x', responseElement);
 
             }
