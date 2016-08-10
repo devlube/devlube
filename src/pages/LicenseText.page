@@ -1,51 +1,52 @@
 <apex:page tabStyle="Account">
 <apex:form >
-
-  <apex:stylesheet value="{!URLFOR($Resource.DhruvSLDS, 'assets/styles/salesforce-lightning-design-system-vf.css')}" />
-
-<div class="slds">
-
-<ul class="slds-list--vertical slds-has-dividers slds-m-top--medium">
-    <li class="slds-list__item"><H1 class="slds-section-title slds-text-align--center" >Licenses Information</H1></li>
-</ul>
-
-<div class="slds-m-top--large slds-m-right--medium">
-
-<p>This software is provided under a unique licensing structure, called the Benevolent Dictator Sharing Model License (BDSM License).
-By installing, copying, or otherwise using this Software, you agree to be bound by the terms of this license.</p>
-
-<div class="slds-text-heading--small slds-m-top--medium slds-m-bottom--medium">What you CAN do :</div>
-
-<ul class="slds-list--dotted slds-m-bottom--medium">
-  <li>You can freely install this code for any commercial or non-commercial purpose, into any number of Salesforce orgs VIA THE OFFICIAL DEVLUBE MANAGED PACKAGE on the DevLube website, which can be found here: <a href="http://devlube.com" ><font color="blue">http://devlube.com</font></a>.</li>
-  <li>You can freely install this code, with or without modifications, into a developer or sandbox org DIRECTLY FROM THE SOURCE CODE.</li>
-  <li>You can fork the code into your own public repository on GitHub, and modify that forked code, provided you keep this and all relevant licenses intact.</li>
-</ul>
-
+<apex:pageblock >
+<apex:pageBlockSection columns="1" title="LicenseText"  >
+<body link="blue">
+<p >
+This software is provided under a unique licensing structure, called the Benevolent Dictator Sharing Model License (BDSM License).
+<br/><br/>
+By installing, copying, or otherwise using this Software, you agree to be bound by the terms of this license.
+<br/><br/><br/>
+<b>What you CAN do:</b>
+<br/><br/>
+You can freely install this code for any commercial or non-commercial purpose, into any number of Salesforce orgs VIA THE OFFICIAL DEVLUBE MANAGED PACKAGE on the DevLube website, which can be found here: <a href="http://devlube.com" ><font color="blue">http://devlube.com</font></a>
+<br/><br/>
+You can freely install this code, with or without modifications, into a developer or sandbox org DIRECTLY FROM THE SOURCE CODE.
+<br/><br/>
+You can fork the code into your own public repository on GitHub, and modify that forked code, provided you keep this and all relevant licenses intact.
+<br/><br/>
 We ENCOURAGE you to improve this code by submitting pull request from your Fork. Through this method, your improvements will help the developer community, and we will try to credit you when possible in the code. By submitting an pull request, you grant IP Assignment of your code to us (though we in return grant you a non-exclusive license back for that assigned code).
+<br/><br/><br/>
 
-<div class="slds-text-heading--small slds-m-top--medium slds-m-bottom--medium">What you CANNOT Do (this a non-exhaustive list):</div>
-<ul class="slds-list--dotted slds-m-bottom--medium">
-<li>You cannot upload some or all of this code as a managed package, beta managed package, or unmanaged package, or anything resembling a package should more options become available in the future.</li>
-<li>You cannot commercialize the distribution of this code in any way (though you may use the official managed package, or modified unpackaged code, for commercial purposes).</li>
-<li>You cannot merge this code with Open Source (such as GPL) and then distribute it, as our licenses are incompatible.</li>
-</ul>
+<b>What you CANNOT Do (this a non-exhaustive list)</b>
+<br/><br/>
+You cannot upload some or all of this code as a managed package, beta managed package, or unmanaged package, or anything resembling a package should more options become available in the future.
+<br/><br/>
+You cannot commercialize the distribution of this code in any way (though you may use the official managed package, or modified unpackaged code, for commercial purposes).
+<br/><br/>
+You cannot merge this code with Open Source (such as GPL) and then distribute it, as our licenses are incompatible.
+<br/><br/><br/>
 
-<div class="slds-text-heading--small slds-m-top--medium slds-m-bottom--medium">Summary:</div>
-<ul class="slds-list--dotted slds-m-bottom--medium">
-<li>You can install this code from the official managed package available on the Salesforce AppExchange or the <a href="http://devlube.com" ><font color="blue">http://devlube.com</font></a> website. </li>
-<li>You may modify this code, and use that modification in an unpackaged sense for yourself, your company, and your direct customers.</li>
-<li>You may upload your modifications to a fork of this code on Github, provided the license is available and intact. We encourage you to make a pull request and assign IP / Copyright of your code.</li>
-
-</ul>
+<b>Summary:</b>
+<br/><br/>
+You can install this code from the official managed package available on the Salesforce AppExchange or the <a href="http://devlube.com" ><font color="blue">http://devlube.com</font></a> website. 
+<br/><br/>
+You may modify this code, and use that modification in an unpackaged sense for yourself, your company, and your direct customers.
+<br/><br/>
+You may upload your modifications to a fork of this code on Github, provided the license is available and intact. We encourage you to make a pull request and assign IP / Copyright of your code.
+<br/><br/>
 However, you may not package, upload to the AppExchange or similar, or re-package this code, or do anything that resembles packaging this code.
+<br/><br/><br/>
 
-<div class="slds-text-heading--small slds-m-top--medium slds-m-bottom--medium">Addendum:</div>
+<b>Addendum:</b>
+<br/><br/>
 Salesforce, AppExchange, and associated logos are trademarks of salesforce.com, inc. This software / project is not owned or officially associated with Salesforce, and we do not imply affiliation.
-
-<div class="slds-text-heading--small slds-m-top--medium slds-m-bottom--medium">Legal Stuff</div>
-<div class="slds-text-heading--small slds-m-top--medium slds-m-bottom--medium">YOU MUST AGREE:</div>
-
+<br/><br/><br/>
+<b>Legal Stuff</b>
+<br/><br/>
+<b>YOU MUST AGREE:</b>
+<br/><br/>
 That you will not remove any copyright or other notices from the Software.
 <br/><br/>
 That if you distribute the Software or any derivative works of the Software, you will distribute them under the same terms and conditions as in this license, and you will not grant other rights to the Software or derivative works that are different from those provided by this BDSM License.
@@ -66,29 +67,39 @@ That all rights not expressly granted to you in this BDSM License are reserved.
 <br/><br/>
 That this BDSM License shall be construed and controlled by the laws of the State of Delaware, USA, without regard to conflicts of law.  If any provision of this BDSM License shall be deemed unenforceable or contrary to law, the rest of this BDSM License shall remain in full effect and interpreted in an enforceable manner that most nearly captures the intent of the original language.  
 <br/><br/>
+</p>
+</body> 
+</apex:pageBlockSection>
+<apex:pageBlockSection columns="1" title="Additional-Licenses">
+<p >
+<br/>/**
+<br/> * &nbsp; Copyright (c), FinancialForce.com, inc
+<br/> * &nbsp; All rights reserved.
+<br/> *
+<br/> * &nbsp; Redistribution and use in source and binary forms, with or without modification,
+<br/> * &nbsp;&nbsp;&nbsp;   are permitted provided that the following conditions are met:
+<br/> *
+<br/> * &nbsp; - Redistributions of source code must retain the above copyright notice,
+<br/> * &nbsp;&nbsp;&nbsp;       this list of conditions and the following disclaimer.
+<br/> * &nbsp; - Redistributions in binary form must reproduce the above copyright notice,
+<br/> * &nbsp;&nbsp;&nbsp;       this list of conditions and the following disclaimer in the documentation
+<br/> * &nbsp;&nbsp;&nbsp;       and/or other materials provided with the distribution.
+<br/> * &nbsp; - Neither the name of the FinancialForce.com, inc nor the names of its contributors
+<br/> * &nbsp;&nbsp;&nbsp;&nbsp;       may be used to endorse or promote products derived from this software without
+<br/> * &nbsp;&nbsp;&nbsp;      specific prior written permission.
+<br/> *
+<br/> * &nbsp; THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+<br/> * &nbsp; ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+<br/> * &nbsp; OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
+<br/> * &nbsp; THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+<br/> * &nbsp; EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+<br/> * &nbsp; OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+<br/> * &nbsp; OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+<br/> * &nbsp; ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+<br/>**/
+</p>
+</apex:pageBlockSection>
 
-</div>
-
-
-<h3 class="slds-section__title">Additional-Licenses</h3>
-
-<div class="slds-text-body--regular slds-m-top--medium slds-m-right--medium slds-m-bottom--large">
-
-Copyright (c), FinancialForce.com, inc All rights reserved.
-<br/>
-Redistribution and use in source and binary forms, with or without modification,are permitted provided that the following conditions are met:
-<br/> - Redistributions of source code must retain the above copyright notice,this list of conditions and the following disclaimer.
-<br/> - Redistributions in binary form must reproduce the above copyright notice,this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
-<br/> - Neither the name of the FinancialForce.com, inc nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
-<br/> 
-<br/>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, 
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, 
-SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) 
-HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) 
-ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-</div>
-</div>
-
+</apex:pageblock>
 </apex:form>
 </apex:page>
